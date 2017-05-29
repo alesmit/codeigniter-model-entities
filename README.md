@@ -1,6 +1,7 @@
 # codeigniter-entity-support
 
-This library provides a schema-based solution to perform CRUD (**C**reate **R**ead **U**pdate and **D**elete) operations on you CodeIgniter models and persist them to db.
+This library provides a schema-based solution to perform CRUD (**C**reate **R**ead **U**pdate and **D**elete) operations on your CodeIgniter models and persist them to db.
+
 Let your models extend `MY_Model` to save time writing Query Builder statements inside of each CI model! A model would just contain its properties to be ready for db operations.
 
 ## Usage
@@ -27,7 +28,7 @@ class User extends MY_Model {
 
 Done! We're ready to go.
 
-### Save: Insert / Update
+### Saving data
 ```php
 // if is a new user (insert)
 $user = new User();
@@ -43,7 +44,7 @@ $user->last_name = 'Shinoda';
 $user = $user->save();
 ```
 
-### Delete
+### Removing data
 ```php
 // get user by id and delete it
 $user = $this->User->getByID(1);
@@ -53,41 +54,51 @@ $deleted = $user->remove();
 ### Select methods
 Each model which extends from **MY_Model** will inherit the following methods:
 
-##### findByAttributes(...)
+#### findByAttributes(...)
+
+Will return a model instance matching the attributes you pass as first argument. They will be in AND condition.
+To perform more complex selects, use the Query Builder class.
+
 ```php
 // select * from users where first_name = 'Mike'
 $mike = $this->User->findByAttributes(array('first_name' => 'Mike'));
 ```
-Will return a model instance matching the attributes you pass as first argument. They will be in AND condition.
-To perform more complex selects, use the Query Builder class.
 
-##### findAllByAttributes(...)
+#### findAllByAttributes(...)
+
+Will return an array of model instances matching the attributes you pass as first argument.
+
 ```php
 // select * from users where country = 'Italy'
 $ita_users = $this->User->findAllByAttributes(array('country' => 'Italy'));
 ```
-Will return an array of model instances matching the attributes you pass as first argument.
 
-##### getByID($id)
+#### getByID($id)
+
+To get a model instance by his `id`.
+
 ```php
 // select * from users id = 1
 $user = $this->User->getByID(1);
 ```
-To get a model instance by his `id`.
 
-##### getAll()
+#### getAll()
+
+Get an array of all model instances.
+
 ```php
 // select * from users
 $all_users = $this->User->getAll();
 ```
-Get an array of all model instances.
 
-##### getLastID()
+#### getLastID()
+
+Get the higher id (mostly the last saved ID)
+
 ```php
 // select max(id) from users
 $higher_id = $this->User->getAll();
 ```
-Get the higher id (mostly the last saved ID)
 
 ## Contributing
 
