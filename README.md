@@ -1,4 +1,4 @@
-# codeigniter-entity-support
+# CodeIgniter Model Entities
 
 This library provides a schema-based solution to perform CRUD (**C**reate **R**ead **U**pdate and **D**elete) operations on your CodeIgniter models and persist them to db.
 
