@@ -97,10 +97,11 @@ Get the higher id (mostly the last saved ID)
 
 ```php
 // select max(id) from users
-$higher_id = $this->User->getAll();
+$higher_id = $this->User->getLastID();
 ```
 
 ## Contributing
 
 Contributions are welcome. Feel free to improve and extend this library.
+
 Commit to master branch and use pull requests.
